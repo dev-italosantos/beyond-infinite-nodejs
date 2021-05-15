@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 
 app.get("/", function(req, res){
-    res.send("Seja bem-vindo Italo Santos ao App!");
+    res.sendFile(__dirname + "/html/index.html");
 });
 
 app.listen(8090, function(){
