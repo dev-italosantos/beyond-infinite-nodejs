@@ -24,9 +24,16 @@ const Usuario = sequelize.define('usuarios', {
     email: {
         type: Sequelize.STRING
     },
-    Age: {
+    age: {
         type: Sequelize.INTEGER
     }
 })
 
-Usuario.sync({force: true})
+//Usuario.sync({force: true})
+
+Usuario.create({
+    name: "Italo",
+    surname: "Santos",
+    email: "italo.santos@nasa.com.br",
+    age: "18",
+})
