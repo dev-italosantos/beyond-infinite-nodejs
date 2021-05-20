@@ -5,7 +5,7 @@ const handlebars = require('express-handlebars')
 
 
  
-app.engine('handlebars', handlebars({defaultLayout: 'main'}))
+app.engine('handlebars', handlebars({extname: 'handlebars', defaultLayout: 'main', layoutsDir: __dirname + '/views/layouts/'}))
 app.set('view engine', 'handlebars')
 
 const sequelize = new Sequelize('nasa', 'root', 'root', {
@@ -14,7 +14,7 @@ const sequelize = new Sequelize('nasa', 'root', 'root', {
 })
 
 app.get('/usuarios', function(req, res){
-    res.render('form')
+    res.render('formulario')
 })
 
 app.listen(8090, function(){
