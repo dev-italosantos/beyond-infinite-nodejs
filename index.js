@@ -11,11 +11,15 @@ app.set('view engine', 'handlebars');
 const sequelize = new Sequelize('nasa', 'root', 'root', {
     host: "localhost",
     dialect: 'mysql'
-})
+});
  
 app.get('/usuarios', function(req, res){
-     res.render('formulario.handlebars')
-})
+ res.render('formulario.handlebars');
+});
+
+app.post('/add', function(req, res){
+    res.send('Formulario recebido!')
+});
 
 app.listen(8090, function(){
     console.log(" Servidor inicializado \n URL http://localhost:8090");
