@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const Sequelize =  require('sequelize');
 const handlebars = require('express-handlebars')
 const bodyParser = require('body-parser');
 
@@ -11,10 +10,6 @@ app.set('view engine', 'handlebars');
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json());
 
-const sequelize = new Sequelize('nasa', 'root', 'root', {
-    host: "localhost",
-    dialect: 'mysql'
-});
  
 app.get('/usuarios', function(req, res){
  res.render('formulario.handlebars');
