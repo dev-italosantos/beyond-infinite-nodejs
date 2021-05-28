@@ -2,22 +2,32 @@ const express = require("express");
 const app = express();
 const handlebars = require('express-handlebars')
 const bodyParser = require('body-parser');
-
+const Post = require('./models/Post')
  
 app.engine('handlebars', handlebars({ extname: 'handlebars', defaultLayout: 'main', layoutsDir: __dirname + '/views/layouts/' }))
-app.set('view engine', 'handlebars');
+app.set('view engine', 'handlebars')
 
 app.use(bodyParser.urlencoded({extended: false}))
-app.use(bodyParser.json());
+app.use(bodyParser.json())
 
- 
-app.get('/usuarios', function(req, res){
- res.render('formulario.handlebars');
-});
+app.get('/', function(req, res) {
+    res.render('home.handlebars')
+})
+
+app.get('/form', function(req, res){
+ res.render('formulario.handlebars')
+})
 
 app.post('/add', function(req, res){
-    res.send("Nome: " + req.body.name + " Sobrenome: " + req.body.sobrenome);
-});
+ Post.create({
+    título: req.body.títle,
+    conteudo: req.body.conteudo
+ }).then(function() {
+    res.redirect('/')
+ }).catch(function(erro) {
+    res.send("Houve um erro:" + erro)
+ })
+})
 
 app.listen(8090, function(){
     console.log(" Servidor inicializado \n URL http://localhost:8090");
