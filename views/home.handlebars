@@ -1,1 +1,7 @@
-<h1>Home Page</h1>
+<h1>Home Page List</h1>
+
+{{#each posts}}
+	<p>{{dataValues.título}}</p>
+	<p>{{dataValues.conteudo}}</p>
+	<hr>
+{{/each}}
