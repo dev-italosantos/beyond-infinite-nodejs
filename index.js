@@ -11,7 +11,9 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
 app.get('/', function(req, res) {
-    res.render('home.handlebars')
+   Post.findAll().then(function(posts){
+      res.render('home.handlebars', {posts: posts})   
+   })
 })
 
 app.get('/form', function(req, res){
