@@ -31,6 +31,14 @@ app.post('/add', function(req, res){
  })
 })
 
+app.get('/deletar/:id', function(req, res) {
+   Post.destroy({where: {'id': req.params.id}}).then(function(){
+      res.send("Postagem deletada com sucesso!")
+   }).catch(function(erro){
+      res.send("Está postagem não existe!")
+   })
+})
+
 app.listen(8090, function(){
     console.log(" Servidor inicializado \n URL http://localhost:8090");
 });
