@@ -1,7 +1,9 @@
 <h1>Home Page List</h1>
 
 {{#each posts}}
+	<small>{{createAt}}</small>
 	<p>{{dataValues.título}}</p>
 	<p>{{dataValues.conteudo}}</p>
+	<a href="/deletar/{{dataValues.id}}"><button>Deletar</button></a>
 	<hr>
 {{/each}}
